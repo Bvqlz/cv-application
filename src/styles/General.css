@@ -1,0 +1,31 @@
+
+.personal-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #F3ECDB;
+    padding: 36px;
+    border-radius: 8px;
+    color: #74716B;
+}
+
+.personal-container label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right;
+    width: 350px;
+    line-height: 26px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.personal-container input {
+    height: 25px;
+    flex: 0 0 200px;
+    margin-left: 10px;
+    background-color: rgb(148, 147, 144);
+    border-radius: 4px;
+}
+
+* {
+}

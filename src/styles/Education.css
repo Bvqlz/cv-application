@@ -1,0 +1,23 @@
+.education-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #F3ECDB;
+    padding: 36px;
+    border-radius: 8px;
+    color: #74716B;
+}
+.education-container label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right;
+    width: 400px;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+
+.education-container input {
+    height: 20px;
+    flex: 0 0 200px;
+    margin-left: 10px;
+}
