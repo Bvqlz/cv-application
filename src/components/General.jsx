@@ -28,7 +28,7 @@ function General({ personalData, onUpdate }) {
                 value={personalData.email}
                 onChange={(e) => updateField('email', e.target.value)}
                 type={"email"}
-                placeholder={"amonguslover123@gmail.com"}
+                placeholder={"johnsmith1234@gmail.com"}
             />
 
             <Input
