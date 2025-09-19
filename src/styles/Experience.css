@@ -5,6 +5,31 @@
     padding: 36px;
     border-radius: 8px;
     color: #74716B;
+    align-items: center;
+}
+
+.experience-compact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #A9AF7E !important;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    gap: 5px;
+    width: 300px;
+}
+
+.experience-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.experience-container h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
 }
 
 /* Only target direct child labels, not nested ones */
@@ -13,21 +38,31 @@
     flex-direction: row;
     justify-content: flex-end;
     text-align: right;
-    width: 400px;
+    width: 350px;
     line-height: 26px;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .experience-container > label input {
-    height: 20px;
+    height: 25px;
     flex: 0 0 200px;
     margin-left: 10px;
+    background-color: rgb(148, 147, 144);
+    border-radius: 4px;
 }
 
 .experience-summary {
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid #ccc;
+    align-items: center;
+}
+
+.experience-summary h2 {
+    text-align: center;
 }
 
 .experience-point {
@@ -42,26 +77,25 @@
 
 /* Reset styles for experience point labels */
 .experience-point-input {
-    flex: 1;
-    display: flex !important;
-    width: auto !important;
-    justify-content: flex-start !important;
-    margin-bottom: 0 !important;
-}
-
-.experience-point-input input {
     width: 100%;
     margin-left: 0;
-    height: 20px;
+    height: 25px;
+    background-color: rgb(148, 147, 144);
+    border-radius: 4px;
+    flex: 1;
 }
 
 .remove-point {
     padding: 3px 8px;
     font-size: 12px;
     flex-shrink: 0;
+    background-color: rgb(148, 147, 144);
+    border-radius: 4px;
 }
 
 .add-point {
     padding: 6px 12px;
     font-size: 12px;
+    background-color: rgb(148, 147, 144);
+    border-radius: 4px;
 }

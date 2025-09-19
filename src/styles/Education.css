@@ -5,19 +5,81 @@
     padding: 36px;
     border-radius: 8px;
     color: #74716B;
+    align-items: center;
 }
+
+.education-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.education-container h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
 .education-container label {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     text-align: right;
-    width: 400px;
+    width: 350px;
     line-height: 26px;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .education-container input {
-    height: 20px;
+    height: 25px;
     flex: 0 0 200px;
     margin-left: 10px;
+    background-color: rgb(148, 147, 144);
+    border-radius: 4px;
+}
+
+.education-compact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #A9AF7E !important;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    gap: 5px;
+    width: 300px;
+}
+
+.compact-title {
+    font-weight: 600;
+    color: white;
+}
+
+.compact-buttons button {
+    background-color: #E6E5A3 !important;
+    color: #6F6F54
+}
+
+.edit-btn, .remove-btn {
+    padding: 4px 8px;
+    font-size: 10px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }

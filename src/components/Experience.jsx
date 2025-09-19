@@ -1,75 +1,101 @@
 import {useState} from "react";
 import '../styles/Experience.css'
 
-function Experience() {
-    const [company, setCompany] = useState('');
-    const [position, setPosition] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [expPoints, setExpPoints] = useState(['']);
+function Experience({ entry, onRemove, onUpdate }) {
+    const updateField = (field, value) => {
+        onUpdate({...entry, [field]: value})
+    }
 
     const addPoint = () => {
-        setExpPoints([...expPoints, '']);
+        //copies all points, and adds an empty one.
+        //onUpdate sends this new array to parent
+        const updatedPoints = [...entry.expPoints, ''];
+        onUpdate({...entry, expPoints: updatedPoints });
     }
 
     const removePoint = (index) => {
-        if(expPoints.length > 1) {
-            setExpPoints(expPoints.filter((_, i) => i !== index));
+        if(entry.expPoints.length > 1) {
+            //as long as the number of points that we have is bigger than one
+            //we create an new array of points without the point at that specific index.
+            const updatedPoints = entry.expPoints.filter((_, i) => i !== index);
+            onUpdate({...entry, expPoints: updatedPoints });
         }
     }
 
     const updatePoint = (index, value) => {
-        const updatedPoints = expPoints.map((point, i) =>
-            i === index ? value : point
-        );
-        setExpPoints(updatedPoints)
+        //for each index, it matches we use the new value, else we want to keep the original
+        //this will replace a specific point at the given index
+        const updatedPoints = entry.expPoints.map((point, i) => i === index ? value : point);
+        onUpdate({...entry, expPoints: updatedPoints})
     }
 
+    const handleSave = () => {
+        onUpdate({...entry, isSaved: true})
+    }
 
+    const handleEdit = () => {
+        onUpdate({...entry, isSaved: false})
+    }
+
+    if(entry.isSaved) {
+        return (
+            <div className="experience-compact">
+                <span className="compact-title">{entry.company || "Company"}</span>
+                <div className={"compact-buttons"}>
+                    <button onClick={handleEdit} className="edit-btn">Edit</button>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className="experience-container">
             <Input
                 label={"Company:"}
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
+                value={entry.company}
+                onChange={(e) => updateField('company', e.target.value)}
                 placeholder={"Boston Dynamics"}
             />
 
             <Input
                 label={"Position:"}
-                value={position}
-                onChange={(e) => setPosition(e.target.value)}
+                value={entry.position}
+                onChange={(e) => updateField('position', e.target.value)}
                 placeholder={"AI/ML Researcher"}
             />
 
             <Input
                 label={"Start Date:"}
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
+                value={entry.startDate}
+                onChange={(e) => updateField('startDate', e.target.value)}
                 type={"date"}
             />
 
             <Input
                 label={"End Date:"}
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
+                value={entry.endDate}
+                onChange={(e) => updateField('endDate', e.target.value)}
                 type={"date"}
             />
 
+            <div className="experience-buttons">
+                <button onClick={handleSave}>Save</button>
+                <button onClick={onRemove} className="remove-entry">Remove</button>
+            </div>
+
             <div className="experience-summary">
-                <h2>Work Experience</h2>
+                <h2>Job Experience</h2>
                 <ul className="experience-list">
-                    {expPoints.map((point, index) => (
+                    {entry.expPoints.map((point, index) => (
                         <li key={index} className="experience-point">
                             <div className="point-container">
                                 <Input
                                     value={point}
                                     onChange={(e) => updatePoint(index, e.target.value)}
                                     placeholder={`Point ${index + 1}...`}
-                                    className='experience-point-input'
+                                    inputClassName='experience-point-input'
                                 />
-                                {expPoints.length > 1 && (
+                                {entry.expPoints.length > 1 && (
                                     <button
                                         type="button"
                                         onClick={() => removePoint(index)}
@@ -87,14 +113,14 @@ function Experience() {
                     onClick={addPoint}
                     className="add-point"
                 >
-                    Add
+                    Add Point
                 </button>
             </div>
         </div>
     )
 }
 
-function Input({label, value, onChange, type = 'text', placeholder}) {
+function Input({label, value, onChange, type = 'text', placeholder, inputClassName}) {
     return (
         <label>
             {label}
@@ -104,6 +130,7 @@ function Input({label, value, onChange, type = 'text', placeholder}) {
                 onChange={onChange}
                 type={type}
                 placeholder={placeholder}
+                className={inputClassName}
             />
         </label>
     )

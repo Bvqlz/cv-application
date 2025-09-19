@@ -1,40 +1,40 @@
 import {useState} from "react";
 import '../styles/General.css'
 
-function General() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+function General({ personalData, onUpdate }) {
+    const updateField = (field, value) => {
+        onUpdate({...personalData, [field]: value});
+    }
 
     return (
         <div className="personal-container">
+            <h1>Personal Info</h1>
             <Input
                 label="First Name:"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                value={personalData.firstName}
+                onChange={(e) => updateField('firstName', e.target.value)}
                 placeholder={"John"}
             />
 
             <Input
                 label="Last Name:"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                value={personalData.lastName}
+                onChange={(e) => updateField('lastName', e.target.value)}
                 placeholder={"Smith"}
             />
 
             <Input
                 label={"Email:"}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={personalData.email}
+                onChange={(e) => updateField('email', e.target.value)}
                 type={"email"}
                 placeholder={"amonguslover123@gmail.com"}
             />
 
             <Input
                 label={"Phone Number:"}
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={personalData.phone}
+                onChange={(e) => updateField('phone', e.target.value)}
                 type={"tel"}
                 placeholder={"111-222-3333"}
             />

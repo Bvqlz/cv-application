@@ -8,6 +8,13 @@
     color: #74716B;
 }
 
+.personal-container h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
 .personal-container label {
     display: flex;
     flex-direction: row;
@@ -25,7 +32,4 @@
     margin-left: 10px;
     background-color: rgb(148, 147, 144);
     border-radius: 4px;
-}
-
-* {
 }
